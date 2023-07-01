@@ -2,6 +2,9 @@ import streamlit as st
 import deploy
 import pandas as pd
 
+st.set_page_config(
+    page_title="Data prediction",
+)
 
 df = pd.read_csv('dataset-auto-collect.csv')
 df_pred = st.session_state['df_pred']

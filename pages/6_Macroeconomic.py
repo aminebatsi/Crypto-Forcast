@@ -4,6 +4,10 @@ import plotly.graph_objs as go
 from datetime import date
 from yahoofinancials import YahooFinancials
 
+st.set_page_config(
+    page_title="Macroeconomic",
+)
+
 today = date.today()
 
 def convert_date(df):

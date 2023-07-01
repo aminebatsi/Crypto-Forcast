@@ -4,8 +4,11 @@ import pandas as pd
 import plotly.graph_objs as go
 import numpy as np
 
+st.set_page_config(
+    page_title="Technical Indicators",
+)
+
 df = pd.read_csv('dataset-auto-collect.csv')
-df_pred = deploy.hello()
 
 df['change'] = df['close'].diff()
 df['gain'] = df.change.mask(df.change < 0, 0.0)

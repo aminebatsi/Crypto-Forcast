@@ -3,6 +3,9 @@ import pandas as pd
 import requests
 import plotly.graph_objs as go
 
+st.set_page_config(
+    page_title="Crypto Market",
+)
 
 st.subheader('Bitcoin Dominance')
 res = requests.get('https://api.coinmarketcap.com/data-api/v3/cryptocurrency/quotes/historical?range=ALL').json()

@@ -4,6 +4,10 @@ import plotly.graph_objs as go
 from datetime import date
 from simplified_scrapy import SimplifiedDoc, req
 
+st.set_page_config(
+    page_title="Bitcoin In Blockchain",
+)
+
 today = date.today()
 
 st.subheader('Bitcoin In Blockchain')

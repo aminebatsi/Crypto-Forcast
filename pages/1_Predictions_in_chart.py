@@ -2,6 +2,10 @@ import streamlit as st
 import pandas as pd
 import plotly.graph_objs as go
 
+st.set_page_config(
+    page_title="Predictions chart",
+)
+
 df = pd.read_csv('dataset-auto-collect.csv')
 df_pred = st.session_state['df_pred']
 
