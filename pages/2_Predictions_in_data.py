@@ -4,7 +4,7 @@ import pandas as pd
 
 
 df = pd.read_csv('dataset-auto-collect.csv')
-df_pred = deploy.hello()
+df_pred = st.session_state['df_pred']
 st.subheader("Prediction of next 15 Days")
 
 

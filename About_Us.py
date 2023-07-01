@@ -2,6 +2,7 @@ import streamlit as st
 import base64
 import datasetCollection
 from datetime import datetime
+import deploy
 
 now = datetime.now()
 
@@ -10,9 +11,10 @@ current_time = now.strftime("%H:%M")
 if current_time < '23:59' and current_time > '19:59':
   datasetCollection.collect_data()
 
+st.session_state['df_pred'] = deploy.hello()
+
 st.set_page_config(
-    page_title="Hello",
-    page_icon="👋",
+    page_title="About Us",
 )
 
 def render_svg(svg_file):

@@ -1,10 +1,9 @@
 import streamlit as st
-import deploy
 import pandas as pd
 import plotly.graph_objs as go
 
 df = pd.read_csv('dataset-auto-collect.csv')
-df_pred = deploy.hello()
+df_pred = st.session_state['df_pred']
 
 st.subheader("Prediction of next 15 Days")
 
