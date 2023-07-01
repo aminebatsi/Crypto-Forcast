@@ -2,6 +2,7 @@ import streamlit as st
 import base64
 import datasetCollection
 
+datasetCollection.collect_data()
 
 st.set_page_config(
     page_title="Hello",
