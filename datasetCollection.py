@@ -215,3 +215,5 @@ def collect_data():
 
     final_df.to_csv('dataset-auto-collect.csv',index=False)
 
+
+collect_data()
