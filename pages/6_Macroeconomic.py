@@ -26,11 +26,14 @@ Infla = Infla[(Infla.Date > '2013-03-28')]
 yahoo_financials = YahooFinancials('GC=F', concurrent=True, max_workers=8, country="US")
 gold = pd.DataFrame(yahoo_financials.get_historical_price_data('2013-04-15', str(today), 'daily')['GC=F']['prices']).rename({'formatted_date':'Date','close':'gold_price'},axis=1)[['Date','gold_price']]
 gold['Date'] = pd.to_datetime(gold['Date'])
-
+gold.fillna('ffill',inplace=True,axis=1)
+gold.fillna('bfill',inplace=True,axis=1)
 yahoo_financials = YahooFinancials('CL=F', concurrent=True, max_workers=8, country="US")
 oil = pd.DataFrame(yahoo_financials.get_historical_price_data('2013-04-15', str(today), 'daily')['CL=F']['prices']).rename({'formatted_date':'Date','close':'WTI_Oil_Price'},axis=1)[['Date','WTI_Oil_Price']]
 oil["Date"] = pd.to_datetime(oil['Date'])
 oil.reset_index(drop=True,inplace=True)
+oil.fillna('ffill',inplace=True,axis=1)
+oil.fillna('bfill',inplace=True,axis=1)
 
 gold_list = pd.to_numeric(gold['gold_price']).tolist()
 oil_list = pd.to_numeric(oil['WTI_Oil_Price']).tolist()
