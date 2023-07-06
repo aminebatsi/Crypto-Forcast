@@ -1,8 +1,8 @@
-name: run datasetCollection
+name: run main.py
 
 on:
   schedule:
-    - cron: '00 19 * * *' # At 00:00 on Monday
+    - cron: ' 19 * * *' # At 00:00 on Monday
 
 jobs:
   build:
