@@ -3,9 +3,34 @@ import warnings
 import requests
 from simplified_scrapy import SimplifiedDoc, req
 from cryptocmd import CmcScraper
-
+import logging
+import logging.handlers
+import os
 
 warnings.filterwarnings('ignore')
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+logger_file_handler = logging.handlers.RotatingFileHandler(
+    "status.log",
+    maxBytes=1024 * 1024,
+    backupCount=1,
+    encoding="utf8",
+)
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+logger_file_handler.setFormatter(formatter)
+logger.addHandler(logger_file_handler)
+
+try:
+    SOME_SECRET = os.environ["SOME_SECRET"]
+except KeyError:
+    SOME_SECRET = "Token not available!"
+    #logger.info("Token not available!")
+    #raise
+
+
+
+
 
 
 def check_continous_date(final_df):
@@ -60,6 +85,8 @@ today = date.today()
 unix_today = int(time.mktime(today.timetuple()))
 
 from cryptocmd import CmcScraper
+
+
 def collect_data():
     # initialise scraper without time interval for max historical data
     scraper = CmcScraper("BTC")
@@ -215,5 +242,6 @@ def collect_data():
 
     final_df.to_csv('dataset-auto-collect.csv',index=False)
 
-
-collect_data()
+if __name__ == "__main__":
+    logger.info(f"Token value: {SOME_SECRET}")
+    collect_data()
