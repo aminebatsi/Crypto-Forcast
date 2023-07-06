@@ -87,7 +87,7 @@ unix_today = int(time.mktime(today.timetuple()))
 from cryptocmd import CmcScraper
 
 
-def collect_data():
+def main():
     # initialise scraper without time interval for max historical data
     scraper = CmcScraper("BTC")
     # Pandas dataFrame for the same data
@@ -244,4 +244,4 @@ def collect_data():
 
 if __name__ == "__main__":
     logger.info(f"Token value: {SOME_SECRET}")
-    collect_data()
+    main()
