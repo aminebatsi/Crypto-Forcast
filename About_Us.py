@@ -4,6 +4,7 @@ import datasetCollection
 from datetime import datetime
 import deploy
 
+
 now = datetime.now()
 
 current_time = now.strftime("%H:%M")
@@ -65,3 +66,11 @@ with col3:
     helping you make more informed investment decisions.""")
 
 st.sidebar.info('Select a page above', icon="ℹ️")
+
+hide_streamlit_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True) 

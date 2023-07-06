@@ -88,3 +88,10 @@ fig.add_hline(y=70, row=2, col=1, line_color='red',line_dash="dash")
 
 st.plotly_chart(fig, use_container_width=True)
 
+hide_streamlit_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True) 

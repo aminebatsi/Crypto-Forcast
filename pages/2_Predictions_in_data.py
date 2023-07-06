@@ -11,8 +11,9 @@ df_pred = deploy.hello()
 st.subheader("Prediction of next 15 Days")
 
 
-df_pred['change'] = df_pred["predicted"].pct_change()
-df_pred.fillna((df_pred.predicted.head(1).values[0] - df.close.tail(1).values[0]) / df.close.tail(1).values[0], inplace=True)
+df_pred['change'] = df_pred["predicted"].pct_change() 
+df_pred['change'] = df_pred['change'] * 100
+df_pred.fillna((df_pred.predicted.head(1).values[0] - df.close.tail(1).values[0]) / df.close.tail(1).values[0], inplace=True) 
 
 
 col1, col2, col3 ,col4, col5,= st.columns(5)
@@ -38,3 +39,11 @@ col15.metric("", "Day 15", str(round(df_pred.iloc[14,2], 2)) + "%")
 
 
 st.dataframe(df_pred.loc[:, df_pred.columns != 'actual'].set_index('Date').transpose())
+
+hide_streamlit_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True) 

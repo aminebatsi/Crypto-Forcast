@@ -39,3 +39,11 @@ fig1.add_trace(go.Scatter(x=df_pred['Date'], y=df_pred['predicted'], line_color=
 fig1.update_layout( xaxis_title='Date', yaxis_title='Price',height=600)
 
 st.plotly_chart(fig1, use_container_width=True)
+
+hide_streamlit_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True) 

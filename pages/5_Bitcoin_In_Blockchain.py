@@ -76,3 +76,11 @@ elif option_tab3 == 'Miners Revenue':
 fig1 = go.Figure()
 fig1.add_trace(go.Scatter(x=final_df['Date'], y=final_df[train_data], mode='lines'))
 st.plotly_chart(fig1, use_container_width=True)
+
+hide_streamlit_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
