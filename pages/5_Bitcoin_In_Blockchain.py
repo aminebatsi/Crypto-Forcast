@@ -58,10 +58,25 @@ df = convert_date(df)
 final_df = merge_df(final_df,df)
 final_df.dropna(axis=0,inplace=True)
 
+data = get_data_bitchartinfo('https://bitinfocharts.com/comparison/bitcoin-hashrate.html')
+df = pd.DataFrame(data,columns=['Date','hashrate'])
+df = convert_date(df)
+final_df = merge_df(final_df,df)
+final_df.dropna(axis=0,inplace=True)
+
+data = get_data_bitchartinfo('https://bitinfocharts.com/comparison/bitcoin-difficulty.html')
+df = pd.DataFrame(data,columns=['Date','mining_difficulty'])
+df = convert_date(df)
+final_df = merge_df(final_df,df)
+final_df.dropna(axis=0,inplace=True)
+
+
+
+
 
 option_tab3 = st.selectbox(
     'Choose Feature',
-    ('Number Of Transaction In Blockchain','Nb of Bitcoin In Circulation', 'Sent Coins In USD', 'Miners Revenue'))
+    ('Number Of Transaction In Blockchain','Nb of Bitcoin In Circulation', 'Sent Coins In USD', 'Miners Revenue', 'Hashrate','Mining Difficulty'))
 
 if option_tab3 == 'Number Of Transaction In Blockchain':
     train_data = 'number_transac_blockchain'
@@ -71,6 +86,10 @@ elif option_tab3 == 'Sent Coins In USD':
     train_data = 'sent_coins_usd'
 elif option_tab3 == 'Miners Revenue':
     train_data = 'miners_revenue'
+elif option_tab3 == 'Hashrate':
+    train_data = 'hashrate'
+elif option_tab3 == 'Mining Difficulty':
+    train_data = 'mining_difficulty'
 
 
 fig1 = go.Figure()
